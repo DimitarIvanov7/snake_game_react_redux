@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import Food from "./Food";
-import Snake from "./SnakeTest";
+import Snake from "./Snake";
 
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 
 const Container = styled.div`
 	width: calc(45% - 4px);
-	/* height: calc(100vh - 4px); */
 
 	aspect-ratio: 1/1;
 
@@ -18,8 +17,6 @@ const Container = styled.div`
 
 const Background = () => {
 	const foodRef = useRef();
-
-	// console.log(foodRef && foodRef.current);
 
 	return (
 		<Container>

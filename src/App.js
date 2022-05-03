@@ -1,7 +1,4 @@
 import Background from "./components/Background";
-import { useState, useRef } from "react";
-import useInterval from "./components/customHooks/useInterval";
-import checkCollision from "./components/customHooks/collisionDetection";
 import useEventListener from "./components/customHooks/useEventListener";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -11,7 +8,6 @@ import { actionCreators } from "./state/index";
 function App() {
 	const snakeDir = useSelector((state) => state.snakeDirection);
 	const snakePos = useSelector((state) => state.snakePosition);
-	const turningPoints = useSelector((state) => state.TurningPoint);
 
 	const dispatch = useDispatch();
 	const { moveDown, moveLeft, moveRight, moveUp, stop, turn, foodCoords } =
@@ -23,23 +19,25 @@ function App() {
 	};
 
 	const handleBtnPress = (e) => {
-		// console.log(turningPoints);
+		console.log(e.key);
 		switch (e.key) {
 			case "w":
+			case "ArrowUp":
 				snakeDir !== "down" && moveUp();
 				turn(snakePos);
 				break;
 			case "s":
+			case "ArrowDown":
 				snakeDir !== "up" && moveDown();
 				turn(snakePos);
 				break;
-
 			case "a":
+			case "ArrowLeft":
 				snakeDir !== "right" && moveLeft();
 				turn(snakePos);
 				break;
-
 			case "d":
+			case "ArrowRight":
 				snakeDir !== "left" && moveRight();
 				turn(snakePos);
 				break;
